@@ -1,0 +1,15 @@
+@import "@/styles/colors";
+
+.main {
+  @apply flex flex-row space-x-2;
+}
+
+.icon {
+  color: $logo-icon-color;
+  @apply h-[36px] w-[36px];
+}
+
+.logo {
+  color: $logo-color;
+  @apply text-xl mt-1;
+}

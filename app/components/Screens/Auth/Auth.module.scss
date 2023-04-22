@@ -1,0 +1,30 @@
+@import "@/styles/colors";
+@import "@/styles/constants";
+
+.main {
+  background-color: $auth-background-color;
+  border-color: $border-color;
+  max-width: $max-auth-form-width;
+  @apply flex flex-col text-center mt-[10%] justify-center
+    mx-auto rounded-md border-[1px] w-[50%] shadow-xl shadow-slate-400 pb-5;
+}
+
+.logo {
+  @apply text-2xl pt-10 font-bold;
+}
+
+.form {
+  @apply flex flex-col space-y-6 mt-6;
+}
+
+.submit {
+  background-color: $button-color;
+  color: $alt-text-color;
+  @apply w-[120px] h-[28px] pt-[2px] flex
+    justify-center shadow-md shadow-gray-400 mx-auto rounded-md;
+}
+
+.account_check {
+  color: $link-text-color;
+  @apply text-sm underline pt-4 cursor-pointer;
+}

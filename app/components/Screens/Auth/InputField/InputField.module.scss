@@ -1,0 +1,27 @@
+@import "@/styles/colors";
+
+.text {
+  @apply flex flex-row;
+}
+
+.icon {
+  @apply ml-12 mt-[2px] w-[22px] h-[22px];
+}
+
+.label {
+  @apply ml-4 mb-[2px] text-lg;
+}
+
+.wrapper {
+  border-color: $input-border-color;
+  @apply mx-10 rounded-md border h-[36px] mb-1;
+}
+
+.input {
+  width: calc(100% - 16px);
+  @apply mx-2 pt-[6px] outline-none;
+}
+
+.error {
+  color: $error-color;
+}

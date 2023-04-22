@@ -1,0 +1,14 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/constants.scss";
+@import "@/styles/colors.scss";
+
+.main {
+  background-color: $navbar-color;
+  @apply space-y-2 h-[$navbar-height];
+}
+
+.navigation {
+  @include flex-basis;
+  max-width: $max-screen-width;
+  @apply mx-auto pb-3;
+}

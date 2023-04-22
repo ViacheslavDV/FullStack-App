@@ -1,0 +1,10 @@
+@import "@/styles/colors";
+
+.main {
+  @apply mt-4;
+}
+
+.account_check {
+  color: $link-text-color;
+  @apply text-sm underline pt-4 cursor-pointer;
+}

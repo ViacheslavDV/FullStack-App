@@ -1,0 +1,15 @@
+.main {
+  @apply flex flex-col space-y-[10px];
+}
+
+.text {
+  @apply hover:text-white;
+}
+
+.option {
+  @apply flex flex-row space-x-2;
+}
+
+.icon {
+  @apply h-[22px] w-[22px];
+}

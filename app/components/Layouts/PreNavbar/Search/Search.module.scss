@@ -1,0 +1,23 @@
+@import "@/styles/constants";
+
+.main {
+  width: $input-width;
+  @apply flex flex-row mt-[4px];
+}
+
+.input_field {
+  width: $input-field-width;
+  @apply h-[30px] pl-8 rounded-md outline-none shadow-sm shadow-[#111];
+}
+
+.r_icon {
+  @apply relative left-7 top-1;
+}
+
+.l_icon {
+  @apply relative right-7 top-1;
+}
+
+.icon {
+  @apply h-[24px] w-[24px];
+}

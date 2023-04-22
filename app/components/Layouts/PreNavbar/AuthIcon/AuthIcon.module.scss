@@ -1,0 +1,23 @@
+.sign_in {
+  @apply flex mt-[6px];
+}
+
+.wrapper {
+  @apply flex flex-col bg-yellow-400 rounded-lg border border-white px-2 py-[2px] mt-[4px] cursor-pointer;
+}
+
+.name {
+  @apply mt-[1px];
+}
+
+.main {
+  @apply flex flex-row;
+}
+
+.icon {
+  @apply h-[20px] w-[20px] mt-[3px];
+}
+
+.user_menu {
+  @apply fixed mt-8 ml-[4px] bg-slate-400 p-[10px] border border-gray-600  rounded-md;
+}

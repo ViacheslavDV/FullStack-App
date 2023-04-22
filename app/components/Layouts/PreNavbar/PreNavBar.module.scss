@@ -1,0 +1,11 @@
+@import "@/styles/mixins.scss";
+
+.main {
+  @include flex-basis;
+  @apply pt-4 pb-2;
+}
+
+.rightSpace {
+  @include flex-basis;
+  @apply space-x-12;
+}
