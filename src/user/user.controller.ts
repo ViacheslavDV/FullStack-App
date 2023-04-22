@@ -1,4 +1,13 @@
-import { Controller, Get, Put, Patch, UsePipes, ValidationPipe, Body, Param } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Put,
+  Patch,
+  UsePipes,
+  ValidationPipe,
+  Body,
+  Param,
+} from '@nestjs/common';
 import { UserService } from './user.service';
 import { Auth } from 'src/auth/decorators/auth.decorator';
 import { CurrentUser } from 'src/auth/decorators/user.decorator';
@@ -10,23 +19,23 @@ export class UserController {
 
   @Get('profile')
   @Auth()
-  async getProfile(@Param('id') id: number) {
-    return this.userService.getProfile(id)
+  async getProfile(@CurrentUser('id') id: number) {
+    return this.userService.getProfile(id);
   }
 
   @UsePipes(new ValidationPipe())
   @Auth()
   @Put('profile')
-  async updateProfile(@CurrentUser('id') id:number, @Body() dto: UserDto) {
-    return this.userService.updateProfile(id, dto)
+  async updateProfile(@CurrentUser('id') id: number, @Body() dto: UserDto) {
+    return this.userService.updateProfile(id, dto);
   }
 
   @Auth()
-  @Patch('profile/favorites/songId') 
+  @Patch('profile/favorites/songId')
   async changeFavorites(
     @Param('songId') songId: number,
-    @CurrentUser('id') id: number
-    ) {
-    return this.userService.changeFavorites(songId, id)
+    @CurrentUser('id') id: number,
+  ) {
+    return this.userService.changeFavorites(songId, id);
   }
 }
