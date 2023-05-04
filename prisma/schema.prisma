@@ -9,15 +9,14 @@ datasource db {
 
 model User {
   id                 Int      @id @default(autoincrement())
-  createdAt          DateTime @default(now()) @map("created_at")
-  updatedAt          DateTime @updatedAt @map("updated_at")
   email              String   @unique
   name               String   @unique
   hashedPassword     String
-  hashedRefreshToken String?
-  avatarPath         String   @default("/uploads/default-avatar.png") @map("avatar_path")
   role               Role     @default(USER)
-  reviews            Review[]
+  avatarPath         String   @default("/uploads/default-avatar.png") @map("avatar_path")
+  createdAt          DateTime @default(now()) @map("created_at")
+  updatedAt          DateTime @updatedAt @map("updated_at")
+  hashedRefreshToken String?
   favorites          Song[]
 }
 
@@ -25,28 +24,30 @@ model Song {
   id          Int      @id @default(autoincrement())
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  releaseDate String
+  releaseDate DateTime? @default(now())
   title       String
-  album       String
+  album       String?
   artist      String
-  duration    Int
-  genre       String[]
-  image       String
+  duration    Int?
+  listeners   Int @default(0)
+  image       String?
   authorId    Int
-  reviews     Review[]
-  author      User     @relation(fields: [authorId], references: [id])
+  genre       String[]
+  file        String 
+  inFavorites User[]
+  // author      Author? @relation(fields: [authorId], references: [id])
 }
 
-model Review {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  coment    String
-  userId    Int
-  songId    Int
-  song      Song     @relation(fields: [songId], references: [id])
-  author    User     @relation(fields: [userId], references: [id])
-}
+// model Author {
+//   id          Int      @id @default(autoincrement())
+//   createdAt   DateTime @default(now())
+//   updatedAt   DateTime @updatedAt
+//   name String
+//   image String
+//   songs Int?
+//   listeners Int @default(0)
+//   song Song[]
+// }
 
 enum Role {
   USER
