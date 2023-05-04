@@ -3,7 +3,7 @@ import { useAuth } from "@/app/hooks/auth/useAuth";
 const ProfileData: React.FC = () => {
   const { user } = useAuth();
   return (
-    <section>
+    <section className="flex flex-col justify-around w-[250px] h-[250px]">
       <div className="flex flex-col space-y-2 py-4">
         <span>Profile name:</span>
         <span>{user?.name}</span>

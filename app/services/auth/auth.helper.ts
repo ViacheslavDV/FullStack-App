@@ -19,6 +19,7 @@ export const removeFromStorage = async () => {
   Cookies.remove("accessToken");
   Cookies.remove("refreshToken");
   localStorage.removeItem("user");
+  localStorage.removeItem("persist:music-app");
 };
 
 export const saveToStorage = (data: IAuthResponse) => {

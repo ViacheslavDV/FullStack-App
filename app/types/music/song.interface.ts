@@ -1,4 +1,4 @@
-import { IUser } from "./user.interface";
+import { IUser } from "../user.interface";
 
 export interface ISong {
   id: number;
@@ -11,7 +11,7 @@ export interface ISong {
   duration: number;
   genre: string[] | string;
   image?: string | null;
-  author: IUser | string | null;
+  author?: IUser | string | null;
   authorId?: number | null;
   reviews?: any | string | null;
 }

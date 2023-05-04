@@ -1,9 +1,12 @@
+@import "@/styles/colors";
+
 .sign_in {
-  @apply flex mt-[6px];
+  @apply flex mt-[8px];
 }
 
 .wrapper {
-  @apply flex flex-col bg-yellow-400 rounded-lg border border-white px-2 py-[2px] mt-[4px] cursor-pointer;
+  background-color: $auth-icon-color;
+  @apply flex flex-col rounded-lg border border-white px-2 py-[2px] mt-[4px] cursor-pointer;
 }
 
 .name {

@@ -12,3 +12,7 @@
   max-width: $max-screen-width;
   @apply mx-auto pb-3;
 }
+
+.category {
+  @apply cursor-pointer;
+}

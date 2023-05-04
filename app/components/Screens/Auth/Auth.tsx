@@ -31,7 +31,6 @@ const Auth: React.FC = () => {
   } = useForm<IAuthUserData>();
 
   const onSubmit: SubmitHandler<IAuthUserData> = (data) => {
-    console.log("submit");
     if (authType === "login") login(data);
     else register(data);
     reset();

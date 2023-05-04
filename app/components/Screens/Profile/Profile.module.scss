@@ -5,5 +5,5 @@
   max-width: $max-screen-width;
   height: $max-screen-height;
   background-color: $page-background-color;
-  @apply flex flex-col border-slate-100 shadow-slate-400 shadow-md pt-10;
+  @apply flex flex-col mx-auto border-slate-100 shadow-slate-400 shadow-md pt-10;
 }

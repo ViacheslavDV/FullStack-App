@@ -15,7 +15,6 @@ import { userSlice } from "./user/user.slice";
 const persistConfig = {
   key: "music-app",
   storage,
-  whitelist: ["user"],
 };
 
 const rootReducer = combineReducers({

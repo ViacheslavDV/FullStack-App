@@ -1,4 +1,4 @@
-import { ISong } from "@/app/types/song.interface";
+import { ISong } from "@/app/types/music/song.interface";
 import { instance } from "../../api/api.interceptor";
 import { IUser } from "../../types/user.interface";
 import { TypeData } from "./data.type";
