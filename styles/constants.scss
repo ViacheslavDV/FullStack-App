@@ -1,8 +1,13 @@
-$max-screen-width: 1400px;
-$max-screen-height: calc(100vh - 104px);
+$max-screen-width: 1200px;
+$max-screen-height: calc(100vh - 152px);
 
+// navbar
 $navbar-height: 80px;
 
+// player
+$player-height: 48px;
+
+// auth
 $max-auth-form-width: 500px;
 
 $input-width: 350px;

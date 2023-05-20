@@ -1,4 +1,4 @@
-import Footer from "../Footer/Footer";
+import Player from "../../Player/Player";
 import Navbar from "../Navbar/Navbar";
 
 type LayoutType = {
@@ -10,7 +10,7 @@ const Layout: React.FC<LayoutType> = ({ children }) => {
     <>
       <Navbar />
       <main>{children}</main>
-      {/* <Footer /> */}
+      <Player />
     </>
   );
 };

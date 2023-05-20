@@ -11,6 +11,7 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { userSlice } from "./user/user.slice";
+import { musicSlice } from "./music/music.slice";
 
 const persistConfig = {
   key: "music-app",
@@ -19,6 +20,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   user: userSlice.reducer,
+  music: musicSlice.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

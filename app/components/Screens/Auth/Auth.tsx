@@ -22,7 +22,6 @@ const Auth: React.FC = () => {
 
   const [authType, setAuthType] = useState<AuthType>("login");
 
-  // create custom hook later !!!
   const {
     register: formRegister,
     handleSubmit,

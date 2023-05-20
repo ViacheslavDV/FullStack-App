@@ -30,7 +30,6 @@ export const login = createAsyncThunk<IAuthResponse, IAuthUserData>(
   }
 );
 
-// REMADE LATER !!!
 // logout
 export const logout = createAsyncThunk("auth/logout", async () =>
   removeFromStorage()

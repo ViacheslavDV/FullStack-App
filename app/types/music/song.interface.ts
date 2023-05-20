@@ -10,6 +10,8 @@ export interface ISong {
   artist: string;
   duration: number;
   genre: string[] | string;
+  listeners: number;
+  file: string;
   image?: string | null;
   author?: IUser | string | null;
   authorId?: number | null;

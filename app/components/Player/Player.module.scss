@@ -1,0 +1,33 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/constants.scss";
+@import "@/styles/colors.scss";
+
+.wrapper {
+  background-color: $wrapper-color;
+  height: $player-height;
+  @apply flex mx-auto justify-center;
+}
+
+.main {
+  max-width: $max-screen-width;
+  height: $player-height;
+  @apply flex flex-row justify-between w-[100%] px-4;
+}
+
+.control {
+  @apply space-x-3;
+}
+
+.progress {
+  @apply flex flex-col;
+}
+
+.progressBar {
+  background-color: #ccc;
+  transition: width 0.2s ease-in-out;
+  @apply h-[8px] min-w-[100%];
+}
+
+.icon {
+  @apply w-[28px] h-[28px] text-white mt-[10px];
+}

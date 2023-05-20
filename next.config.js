@@ -12,8 +12,8 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/uploads/:name",
-        destination: `http://localhost:4200/uploads/:name`,
+        source: "/uploads/:name*",
+        destination: `http://localhost:4200/uploads/:name*`,
         permanent: true,
       },
     ];

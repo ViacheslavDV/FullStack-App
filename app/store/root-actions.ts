@@ -1,5 +1,10 @@
-import * as userActions from "./user/user.actions";
+import { musicActions } from "./music/music.slice";
+import { checkAuth, login, logout, register } from "./user/user.actions";
 
 export const rootActions = {
-  ...userActions,
+  checkAuth,
+  login,
+  logout,
+  register,
+  ...musicActions,
 };
