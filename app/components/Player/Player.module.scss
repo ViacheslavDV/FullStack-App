@@ -15,17 +15,75 @@
 }
 
 .control {
-  @apply space-x-3;
+  @apply space-x-3 w-[100px];
+}
+
+.center {
+  @apply flex flex-row space-x-2;
 }
 
 .progress {
-  @apply flex flex-col;
+  @apply flex flex-col mt-[2px];
+}
+
+.duration {
+  @apply mt-[20px] w-[40px] text-center;
+}
+
+.title {
+  @apply text-gray-300;
 }
 
 .progressBar {
-  background-color: #ccc;
+  background-color: $progress-bar-bg-color;
   transition: width 0.2s ease-in-out;
-  @apply h-[8px] min-w-[100%];
+  @apply flex min-w-[100%] h-[8px] z-30 mt-[2px];
+}
+
+.songProgress {
+  z-index: 2;
+  background-color: $progress-bar-color;
+  @apply relative h-[8px];
+}
+
+.volume {
+  @apply flex flex-row mt-6 space-x-[6px] w-[100px];
+}
+
+.volumeSlider {
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+  @apply w-[100%] h-[6px] rounded-md bg-white cursor-pointer;
+}
+
+.volumeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 50%;
+  background-color: $volume-thumb;
+  @apply w-[11px] h-[11px] cursor-pointer;
+}
+
+.volumeSlider::-moz-range-thumb {
+  border-radius: 50%;
+  background-color: $volume-thumb;
+  @apply w-[14px] h-[14px] cursor-pointer border-none;
+}
+
+.volumeSlider:focus {
+  opacity: 1;
+}
+
+.volumeSlider::-moz-focus-inner {
+  border: 0;
+}
+
+.volumeIcon {
+  @apply w-[22px] h-[22px] relative bottom-[8px] text-white;
 }
 
 .icon {
