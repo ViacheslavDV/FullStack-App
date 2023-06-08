@@ -1,12 +1,25 @@
-// import { PrismaClient } from '@prisma/client';
-// import { authors } from 'prisma/data/authors';
+import { PrismaClient } from '@prisma/client';
 
-// const prisma = new PrismaClient();
+import { seedMusic } from './seed-music';
+import { authors } from '../data/authors';
 
-// export async function seedAuthors() {
-//   for (let author of authors) {
-//     await prisma.author.create({
-//       data: author,
-//     });
-//   }
-// }
+const prisma = new PrismaClient();
+
+export async function seedAuthors() {
+  let createdAuthor;
+  for (let authorData of authors) {
+    const { songs, ...author } = authorData;
+    createdAuthor = await prisma.author.create({
+      data: {
+        ...author,
+        songs: {
+          create: songs,
+        },
+      },
+      include: {
+        songs: true,
+      },
+    });
+  }
+  await seedMusic(createdAuthor.id);
+}

@@ -6,6 +6,7 @@ import { UserModule } from './user/user.module';
 import { MusicModule } from './music/music.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { path } from 'app-root-path';
+import { AuthorModule } from './author/author.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { path } from 'app-root-path';
     AuthModule,
     UserModule,
     MusicModule,
+    AuthorModule,
   ],
   providers: [PrismaService],
 })
