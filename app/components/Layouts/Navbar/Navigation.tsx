@@ -11,7 +11,9 @@ const Navigation: React.FC = () => {
         New
       </Link>
       <div>Genres</div>
-      <div>Artists</div>
+      <Link className={styles.category} href="/author/all">
+        Artists
+      </Link>
       <div>Users</div>
     </div>
   );

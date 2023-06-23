@@ -3,3 +3,77 @@
 .main {
   @include screen;
 }
+
+.container {
+  @apply mx-2;
+}
+
+.song {
+  @apply flex flex-row h-[48px];
+}
+
+.fields {
+  @apply flex flex-row mx-2;
+}
+
+.titleTitle {
+  @apply w-[40%] text-center py-3;
+}
+
+// fields
+
+.order {
+  @apply w-[5%] text-center py-3;
+}
+
+.avatar {
+  @apply w-[10%] text-center overflow-clip max-h-[50px] whitespace-nowrap py-3;
+}
+
+.name {
+  @apply w-[40%] flex flex-col max-h-[48px];
+}
+
+.title {
+  @apply text-center overflow-clip font-semibold;
+}
+
+.artist {
+  @apply text-center overflow-clip font-light;
+}
+
+.album {
+  @apply w-[25%] text-center overflow-clip py-3;
+}
+
+.add {
+  &:hover {
+    :first-child {
+      display: none;
+    }
+    :last-child {
+      display: block;
+    }
+  }
+  @apply w-[5%] py-3 px-4;
+}
+
+.addHovered {
+  @apply hidden hover:flex;
+}
+
+// .addUnHovered {
+//   @apply block hover:hidden;
+// }
+
+.time {
+  @apply w-[15%] py-3;
+}
+
+.timeIcon {
+  @apply flex mx-auto;
+}
+
+.duration {
+  @apply w-[15%] py-3 text-center;
+}

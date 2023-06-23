@@ -1,0 +1,43 @@
+@import "@/styles/mixins";
+
+.main {
+  @include screen;
+}
+
+.section {
+  @apply flex flex-col mx-2;
+}
+
+.fields {
+  @apply flex flex-row justify-around;
+}
+
+.container {
+  @apply mt-4;
+}
+
+.data {
+  @apply flex flex-row justify-around;
+}
+
+// fields
+
+.order {
+  @apply w-[5%] text-center;
+}
+
+.avatar {
+  @apply w-[10%] text-center overflow-clip max-h-[50px] whitespace-nowrap;
+}
+
+.author {
+  @apply w-[50%] text-center overflow-clip;
+}
+
+.songs {
+  @apply w-[20%] text-center;
+}
+
+.rating {
+  @apply w-[15%] text-center;
+}

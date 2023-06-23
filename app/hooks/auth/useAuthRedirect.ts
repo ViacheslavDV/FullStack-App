@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useAuth } from "./useAuth";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export const useAuthRedirect = () => {
   const { user } = useAuth();

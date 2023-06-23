@@ -5,7 +5,7 @@
   background-color: $auth-background-color;
   border-color: $border-color;
   max-width: $max-auth-form-width;
-  @apply flex flex-col text-center mt-[10%] justify-center
+  @apply flex flex-col text-center mt-[96px] justify-center
     mx-auto rounded-md border-[1px] w-[50%] shadow-xl shadow-slate-400 pb-5;
 }
 

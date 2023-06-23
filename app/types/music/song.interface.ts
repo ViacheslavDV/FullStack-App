@@ -15,5 +15,4 @@ export interface ISong {
   image?: string | null;
   author?: IUser | string | null;
   authorId?: number | null;
-  reviews?: any | string | null;
 }

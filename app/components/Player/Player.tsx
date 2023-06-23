@@ -76,7 +76,9 @@ const Player: React.FC = () => {
         <section className={styles.center}>
           <span className={styles.duration}>{currentDuration.toFixed(0)}</span>
           <div className={styles.progress}>
-            <span className={styles.title}>{music.song.title}</span>
+            {music.song && (
+              <span className={styles.title}>{music.song.title}</span>
+            )}
             <div className={styles.progressBar} onClick={handleProgressBar}>
               <span
                 style={{ width: `${progressBarWidth}%` }}
