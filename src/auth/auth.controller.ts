@@ -31,12 +31,6 @@ export class AuthController {
     return this.authService.login(dto);
   }
 
-  @HttpCode(HttpStatus.OK)
-  @Post('logout')
-  async logout(userId: number): Promise<string> {
-    return this.authService.logout(userId);
-  }
-
   @UsePipes(new ValidationPipe())
   @HttpCode(HttpStatus.OK)
   @Post('login/refresh_token')

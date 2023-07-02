@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import { seedUsers } from './seed-users';
-import { seedMusic } from './seed-music';
+// import { seedMusic } from './seed-music';
 import { seedAuthors } from './seed-authors';
 
 const prisma = new PrismaClient();

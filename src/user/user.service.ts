@@ -1,27 +1,21 @@
 import { Injectable, BadRequestException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma.service';
 import { UserDto } from './dto/user.dto';
-import { Prisma } from '@prisma/client';
-import { hash } from 'argon2';
 
 @Injectable()
 export class UserService {
   constructor(private prisma: PrismaService) {}
 
   // get user profile
-  async getProfile(id: number, selectObject: Prisma.UserSelect = {}) {
+  async getProfile(id: number) {
+    console.log(id);
+
     const user = await this.prisma.user.findUnique({
       where: {
         id,
       },
-      select: {
-        id: true,
-        name: true,
-        email: true,
-        avatarPath: true,
-        hashedPassword: false,
+      include: {
         favorites: true,
-        ...selectObject,
       },
     });
 
@@ -51,12 +45,10 @@ export class UserService {
         email: dto.email,
         name: dto.name,
         avatarPath: dto.avatarPath,
-        hashedPassword: dto.password
-          ? await hash(dto.password)
-          : user.hashedPassword,
       },
     });
   }
+
   // change favorite songs
   async changeFavorites(songId: number, id: number) {
     const user = await this.getProfile(id);

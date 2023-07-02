@@ -9,44 +9,43 @@ datasource db {
 
 model User {
   id                 Int      @id @default(autoincrement())
+  createdAt          DateTime @default(now()) @map("created_at")
+  updatedAt          DateTime @updatedAt @map("updated_at")
+
   email              String   @unique
   name               String   @unique
   hashedPassword     String
-  role               Role     @default(USER)
+  
+  isAdmin            Boolean  @default(false) @map("is_admin")
   avatarPath         String   @default("/uploads/default-avatar.png") @map("avatar_path")
-  createdAt          DateTime @default(now()) @map("created_at")
-  updatedAt          DateTime @updatedAt @map("updated_at")
-  hashedRefreshToken String?
   favorites          Song[]
 }
 
 model Song {
   id          Int      @id @default(autoincrement())
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
   title       String
-  album       String?
+  album       String
   artist      String
   listeners   Int      @default(0)
   image       String?
   genre       String[]
-  file        String
-  inFavorites User[]
+  filePath    String @map("file_path")
+  inFavorites User[] 
   author   Author @relation(fields: [authorId], references: [id])
-  authorId Int
+  authorId Int @map("author_id")
 }
 
 model Author {
   id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  name      String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  name      String  
   image     String
   listeners Int      @default(0)
   songs     Song[]
 }
 
-enum Role {
-  USER
-  ADMIN
-}

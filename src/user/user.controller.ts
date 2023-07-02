@@ -31,7 +31,7 @@ export class UserController {
   }
 
   @Auth()
-  @Patch('profile/favorites/songId')
+  @Patch('profile/favorites/:songId')
   async changeFavorites(
     @Param('songId') songId: number,
     @CurrentUser('id') id: number,

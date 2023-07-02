@@ -4,7 +4,6 @@ import {
   BadRequestException,
   UnauthorizedException,
   NotFoundException,
-  ForbiddenException,
 } from '@nestjs/common';
 import { PrismaService } from 'src/prisma.service';
 import { AuthDto } from './dto/auth.dto';
@@ -13,6 +12,7 @@ import { JwtService } from '@nestjs/jwt';
 import { RefreshTokenDto } from './dto/refreshToken.dto';
 import { UserWithTokens } from './types/user_with_tokens.type';
 import { LoginDto } from './dto/login.dto';
+import { UserService } from 'src/user/user.service';
 
 @Injectable()
 export class AuthService {
@@ -20,6 +20,7 @@ export class AuthService {
     private prisma: PrismaService,
     private jwt: JwtService,
     private configService: ConfigService,
+    private userService: UserService,
   ) {}
 
   // register
@@ -41,7 +42,6 @@ export class AuthService {
     });
 
     const tokens = await this.generateTokens(user.id, user.email);
-    await this.updateRefTokenHash(user.id, tokens.refreshToken);
 
     return {
       user,
@@ -54,27 +54,10 @@ export class AuthService {
     const user = await this.validateUser(dto);
     const tokens = await this.generateTokens(user.id, user.email);
 
-    await this.updateRefTokenHash(user.id, tokens.refreshToken);
     return {
       user,
       ...tokens,
     };
-  }
-
-  // logout
-  async logout(userId: number): Promise<string> {
-    await this.prisma.user.updateMany({
-      where: {
-        id: userId,
-        hashedRefreshToken: {
-          not: null,
-        },
-      },
-      data: {
-        hashedRefreshToken: null,
-      },
-    });
-    return 'Logout successful';
   }
 
   // refresh tokens
@@ -86,6 +69,11 @@ export class AuthService {
       where: {
         id: verifyToken.id,
       },
+      select: {
+        isAdmin: true,
+        id: true,
+        email: true,
+      },
     });
 
     const tokens = await this.generateTokens(user.id, user.email);
@@ -94,21 +82,6 @@ export class AuthService {
       user,
       ...tokens,
     };
-  }
-
-  // update refresh hash
-  async updateRefTokenHash(
-    userId: number,
-    refreshToken: string,
-  ): Promise<void> {
-    await this.prisma.user.update({
-      where: {
-        id: userId,
-      },
-      data: {
-        hashedRefreshToken: await hash(refreshToken),
-      },
-    });
   }
 
   // validate user

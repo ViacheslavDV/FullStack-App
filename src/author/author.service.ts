@@ -6,7 +6,11 @@ export class AuthorService {
   constructor(private prisma: PrismaService) {}
 
   async getAllAuthors() {
-    const authors = await this.prisma.author.findMany();
+    const authors = await this.prisma.author.findMany({
+      include: {
+        songs: true,
+      },
+    });
     return authors;
   }
 

@@ -17,5 +17,5 @@ export class AuthDto {
   password: string;
 
   @IsOptional()
-  role: 'USER' | 'ADMIN';
+  isAdmin: boolean;
 }

@@ -1,15 +1,18 @@
 import { Tokens } from './tokens.type';
+import { Song } from '@prisma/client';
 
 export interface UserWithTokens extends Tokens {
   user: {
     id: number;
     createdAt: Date;
     updatedAt: Date;
+
     email: string;
-    name?: string;
+    name: string;
     hashedPassword?: string;
-    hashedRefreshToken?: string;
+
+    isAdmin: boolean;
     avatarPath?: string;
-    role?: string;
+    favorites?: Song | null;
   };
 }
