@@ -8,8 +8,6 @@ export class UserService {
 
   // get user profile
   async getProfile(id: number) {
-    console.log(id);
-
     const user = await this.prisma.user.findUnique({
       where: {
         id,
