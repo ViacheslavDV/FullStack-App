@@ -1,6 +1,6 @@
 import { AuthorDataType } from "../../types/author/author-data.type";
 import { IAuthor } from "@/app/types/author/author.interface";
-import { instance } from "@/app/api/api.interceptor";
+import { instance } from "@/app/utils/api/api.interceptor";
 
 export const AuthorService = {
   async getAuthors(authorDataType: AuthorDataType) {

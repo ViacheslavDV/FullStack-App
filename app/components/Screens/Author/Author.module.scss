@@ -2,6 +2,7 @@
 
 .main {
   @include screen;
+  @apply overflow-y-scroll;
 }
 
 .section {
@@ -13,31 +14,35 @@
 }
 
 .container {
-  @apply mt-4;
+  @apply mx-2 space-y-3;
 }
 
 .data {
-  @apply flex flex-row justify-around;
+  @apply flex flex-row justify-around h-[48px];
 }
 
 // fields
 
 .order {
-  @apply w-[5%] text-center;
+  @apply w-[5%] text-center py-3;
 }
 
 .avatar {
-  @apply w-[10%] text-center overflow-clip max-h-[50px] whitespace-nowrap;
+  @apply w-[10%] text-center overflow-clip whitespace-nowrap;
+}
+
+.image {
+  @apply flex mx-auto h-[48px];
 }
 
 .author {
-  @apply w-[50%] text-center overflow-clip;
+  @apply w-[50%] text-center overflow-clip py-3;
 }
 
 .songs {
-  @apply w-[20%] text-center;
+  @apply w-[20%] text-center py-3;
 }
 
 .rating {
-  @apply w-[15%] text-center;
+  @apply w-[15%] text-center py-3;
 }

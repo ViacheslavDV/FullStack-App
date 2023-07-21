@@ -2,10 +2,11 @@
 
 .main {
   @include screen;
+  @apply overflow-y-scroll;
 }
 
 .container {
-  @apply mx-2;
+  @apply mx-2 space-y-3;
 }
 
 .song {
@@ -27,7 +28,11 @@
 }
 
 .avatar {
-  @apply w-[10%] text-center overflow-clip max-h-[50px] whitespace-nowrap py-3;
+  @apply w-[10%] text-center overflow-clip whitespace-nowrap;
+}
+
+.image {
+  @apply flex mx-auto h-[48px];
 }
 
 .name {

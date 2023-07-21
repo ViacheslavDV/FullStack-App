@@ -10,7 +10,9 @@ const Layout: React.FC<LayoutType> = ({ children }) => {
     <>
       <Navbar />
       <main>{children}</main>
-      <Player />
+      <div className="absolute bottom-0 w-full">
+        <Player />
+      </div>
     </>
   );
 };

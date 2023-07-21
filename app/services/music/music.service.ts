@@ -1,4 +1,4 @@
-import { instance } from "@/app/api/api.interceptor";
+import { instance } from "@/app/utils/api/api.interceptor";
 import { SongDataType } from "@/app/types/music/song-data.type";
 import { ISong } from "@/app/types/music/song.interface";
 

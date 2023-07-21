@@ -1,30 +1,23 @@
+"use client";
 import { PropsWithChildren, useEffect } from "react";
-import { TypeComponentAuthFields } from "./auth-page.type";
-import dynamic from "next/dynamic";
 import { useAuth } from "@/app/hooks/auth/useAuth";
 import { useStoreActions } from "@/app/hooks/useStoreActions";
-import { useRouter } from "next/router";
 import { getAccessToken } from "@/app/services/auth/auth.helper";
 import Cookies from "js-cookie";
+import { usePathname, useRouter } from "next/navigation";
+import { protectedRoutes } from "@/app/utils/constants";
 
-const DynamicCheckRole = dynamic(() => import("./CheckRoleProvider"), {
-  ssr: false,
-});
-
-const AuthProvider: React.FC<PropsWithChildren<TypeComponentAuthFields>> = ({
-  Component: { isAuthorized },
-  children,
-}) => {
+const AuthProvider: React.FC<PropsWithChildren<unknown>> = ({ children }) => {
   const { user } = useAuth();
-  const { logout } = useStoreActions();
-  const { pathname } = useRouter();
+  const { logout, checkAuth } = useStoreActions();
+  const pathname = usePathname();
 
-  // useEffect(() => {
-  //   const accessToken = getAccessToken();
-  //   if (accessToken) {
-  //     checkAuth();
-  //   }
-  // }, []);
+  useEffect(() => {
+    const accessToken = getAccessToken();
+    if (accessToken) {
+      checkAuth();
+    }
+  }, []);
 
   useEffect(() => {
     const refreshToken = Cookies.get("refreshToken");
@@ -33,11 +26,17 @@ const AuthProvider: React.FC<PropsWithChildren<TypeComponentAuthFields>> = ({
     }
   }, [pathname]);
 
-  return isAuthorized ? (
-    <DynamicCheckRole Component={{ isAuthorized }}>{children}</DynamicCheckRole>
-  ) : (
-    <>{children}</>
+  const router = useRouter();
+
+  const isProtectedRoute = protectedRoutes.some((route) =>
+    pathname?.startsWith(route)
   );
+
+  if (!isProtectedRoute) return <>{children}</>;
+  if (isProtectedRoute && user) return <>{children}</>;
+
+  pathname !== "/auth" && router.replace("/auth");
+  return null;
 };
 
 export default AuthProvider;

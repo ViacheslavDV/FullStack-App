@@ -17,7 +17,7 @@ const Player: React.FC = () => {
   useEffect(() => {
     if (music.song) {
       soundRef.current = new Howl({
-        src: music.song.file,
+        src: music.song.filePath,
         html5: true,
         volume: volume,
         onload: () => {
@@ -33,8 +33,20 @@ const Player: React.FC = () => {
     }
   }, [music]);
 
-  const play = () => soundRef.current?.play();
-  const pause = () => soundRef.current?.pause();
+  // pause current song if other was chosen
+  useEffect(() => {
+    pause();
+  }, [music]);
+
+  const play = () => {
+    soundRef.current?.play();
+    // music.isPlaying = true;
+  };
+
+  const pause = () => {
+    soundRef.current?.pause();
+    // music.isPlaying = false;
+  };
 
   // get current song progress
   const updateSongProgress = () => {

@@ -2,17 +2,17 @@ import { IUser } from "../user.interface";
 
 export interface ISong {
   id: number;
-  createdAt: Date;
-  updatedAt: Date;
-  releaseDate?: Date | number;
+  createdAt: Date | string;
+  updatedAt: Date | string;
+
   title: string;
-  album?: string;
+  album: string;
   artist: string;
-  duration: number;
-  genre: string[] | string;
   listeners: number;
-  file: string;
-  image?: string | null;
+  image?: string;
+  genre: string[];
+  filePath: string;
+  inFavorites: IUser[] | null;
   author?: IUser | string | null;
-  authorId?: number | null;
+  authorId: number;
 }

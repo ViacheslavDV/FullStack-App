@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { errorCatch } from "@/app/api/api.helper";
+import { errorCatch } from "@/app/utils/api/api.helper";
 import { IAuthResponse, IAuthUserData, IEmailPassword } from "./user.interface";
 import { removeFromStorage } from "@/app/services/auth/auth.helper";
 import { AuthService } from "@/app/services/auth/auth.service";
@@ -36,7 +36,7 @@ export const logout = createAsyncThunk("auth/logout", async () =>
 );
 
 // check auth
-export const checkAuth = createAsyncThunk<IAuthResponse | unknown>(
+export const checkAuth = createAsyncThunk<IAuthResponse | any>(
   "auth/check-auth",
   async (_, thunkApi) => {
     try {

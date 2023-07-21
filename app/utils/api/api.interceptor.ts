@@ -3,8 +3,8 @@ import { errorCatch, getContentType } from "./api.helper";
 import {
   getAccessToken,
   removeFromStorage,
-} from "../services/auth/auth.helper";
-import { AuthService } from "../services/auth/auth.service";
+} from "../../services/auth/auth.helper";
+import { AuthService } from "../../services/auth/auth.service";
 
 export const instance = axios.create({
   baseURL: process.env.SERVER_URL,

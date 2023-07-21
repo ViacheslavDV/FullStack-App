@@ -29,14 +29,22 @@ const Music: React.FC = () => {
     console.log(song);
   };
 
-  useEffect(() => {
-    soundRef.current = new Howl({
-      src: data && (data[0]?.file as any),
-      onload: () => {
-        setSongDuration(soundRef.current?.duration() || 0);
-      },
-    });
-  }, [data]);
+  // get songs length
+  // useEffect(() => {
+  //   soundRef.current = new Howl({
+  //     src: data && (data[0]?.file as any),
+  //     onload: () => {
+  //       setSongDuration(soundRef.current?.duration() || 0);
+  //     },
+  //   });
+  // }, [data]);
+
+  // load images from server
+  const myLoader = ({ src }: { src: string }) => {
+    return `http://localhost:4200${src}`;
+  };
+
+  console.log(data);
 
   return (
     <div className={styles.main}>
@@ -60,13 +68,16 @@ const Music: React.FC = () => {
             >
               <p className={styles.order}>{song.id}</p>
               {song.image && (
-                <Image
-                  className={styles.avatar}
-                  src={song.image}
-                  alt={song.title}
-                  width={50}
-                  height={50}
-                />
+                <div className={styles.avatar}>
+                  <Image
+                    loader={myLoader}
+                    className={styles.image}
+                    src={song.image}
+                    alt={song.title}
+                    width={50}
+                    height={50}
+                  />
+                </div>
               )}
               <div className={styles.name}>
                 <p className={styles.title}>{song.title}</p>

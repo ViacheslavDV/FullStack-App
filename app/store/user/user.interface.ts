@@ -1,10 +1,9 @@
-import { Role } from "@/app/types/role.enum";
 import { IUser } from "@/app/types/user.interface";
 
 export interface IUserState {
   email: string;
   name: string;
-  role: Role;
+  isAdmin: boolean;
   avatarPath?: string;
 }
 

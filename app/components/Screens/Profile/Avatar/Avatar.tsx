@@ -1,16 +1,20 @@
-import { useAuth } from "@/app/hooks/auth/useAuth";
 import Image from "next/image";
 
-const Avatar: React.FC = () => {
-  const { user } = useAuth();
+type AvatarType = {
+  avatarPath: string | undefined | any;
+};
+
+const Avatar: React.FC<AvatarType> = ({ avatarPath }) => {
+  const myLoader = ({ src }: { src: string }) => {
+    return `http://localhost:4200${src}`;
+  };
 
   return (
-    // Change to default avatar from server later !!!
     <div>
       <Image
+        loader={myLoader}
         className=""
-        // src={user?.avatarPath ? user.avatarPath : "/def_avatar.webp"}
-        src="/def_avatar.webp"
+        src={!avatarPath ? avatarPath : "/uploads/defAvatar/defAvatar1.jpg"}
         alt="avatar"
         height={250}
         width={250}

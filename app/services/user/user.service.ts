@@ -1,12 +1,12 @@
 import { ISong } from "@/app/types/music/song.interface";
-import { instance } from "../../api/api.interceptor";
+import { instance } from "../../utils/api/api.interceptor";
 import { IUser } from "../../types/user.interface";
 import { TypeData } from "./data.type";
 
 export const UserService = {
   async getAll() {
     return instance<IUser[]>({
-      url: `/users`,
+      url: `/user`,
       method: "GET",
     });
   },

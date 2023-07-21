@@ -5,6 +5,13 @@ import Image from "next/image";
 const Author = () => {
   const { data, status, stateAuthorDataType, setStateAuthorDataType } =
     useAuthorQuery();
+
+  // load images from server
+  const myLoader = ({ src }: { src: string }) => {
+    return `http://localhost:4200${src}`;
+  };
+  console.log(data);
+
   return (
     <main className={styles.main}>
       <section className={styles.section}>
@@ -21,13 +28,16 @@ const Author = () => {
               <div key={author.id} className={styles.data}>
                 <p className={styles.order}>{author.id}</p>
                 {author.image && (
-                  <Image
-                    className={styles.avatar}
-                    src={author.image}
-                    alt={author.name}
-                    width={50}
-                    height={50}
-                  />
+                  <div className={styles.avatar}>
+                    <Image
+                      loader={myLoader}
+                      className={styles.image}
+                      src={author.image}
+                      alt={author.name}
+                      width={50}
+                      height={50}
+                    />
+                  </div>
                 )}
                 <p className={styles.author}>{author.name}</p>
                 <p className={styles.songs}>{author.songs?.length}</p>

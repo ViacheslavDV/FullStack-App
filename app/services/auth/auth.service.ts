@@ -1,4 +1,4 @@
-import { getContentType } from "@/app/api/api.helper";
+import { getContentType } from "@/app/utils/api/api.helper";
 import {
   IAuthResponse,
   IAuthUserData,
@@ -7,7 +7,7 @@ import {
 import axios from "axios";
 import Cookies from "js-cookie";
 import { saveToStorage } from "./auth.helper";
-import { instance } from "@/app/api/api.interceptor";
+import { instance } from "@/app/utils/api/api.interceptor";
 import { AuthType } from "@/app/types/auth/auth.type";
 
 export const AuthService = {

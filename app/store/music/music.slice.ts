@@ -4,6 +4,7 @@ import { ISong } from "@/app/types/music/song.interface";
 
 const initialState: IInitialMusicState = {
   song: null,
+  isPlaying: false,
 };
 
 export const musicSlice = createSlice({
@@ -12,6 +13,7 @@ export const musicSlice = createSlice({
   reducers: {
     setActiveSong: (state, action: PayloadAction<ISong>) => {
       state.song = action.payload;
+      state.isPlaying = false;
     },
   },
 });

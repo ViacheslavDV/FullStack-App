@@ -10,7 +10,7 @@ const UserMenu: React.FC = () => {
 
   return (
     <main className={styles.main}>
-      <Link href="/profile" className={styles.option}>
+      <Link href="/user/profile" className={styles.option}>
         <AiOutlineUser className={styles.icon} />
         <span className={styles.text}>My Profile</span>
       </Link>

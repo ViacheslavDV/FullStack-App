@@ -6,7 +6,7 @@ export const useLogout = () => {
   const router = useRouter();
 
   const logoutFn = () => {
-    router.push("/", "/");
+    router.push("/music/all");
     logout();
     setTimeout(() => {
       router.reload();

@@ -1,16 +1,20 @@
 import { useAuth } from "@/app/hooks/auth/useAuth";
 
-const ProfileData: React.FC = () => {
-  const { user } = useAuth();
+type ProfileDataType = {
+  userName: string | undefined;
+  userMail: string | undefined;
+};
+
+const ProfileData: React.FC<ProfileDataType> = ({ userName, userMail }) => {
   return (
     <section className="flex flex-col justify-around w-[250px] h-[250px]">
       <div className="flex flex-col space-y-2 py-4">
         <span>Profile name:</span>
-        <span>{user?.name}</span>
+        <span></span>
       </div>
       <div className="flex flex-col space-y-2 py-4">
         <span>User email:</span>
-        <span>{user?.email}</span>
+        <span></span>
       </div>
     </section>
   );

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IUserInitialState } from "./user.interface";
-import { login, register } from "./user.actions";
+import { checkAuth, login, register } from "./user.actions";
 
 const initialState: IUserInitialState = {
   user: null,
@@ -30,10 +30,10 @@ export const userSlice = createSlice({
       })
       .addCase(login.rejected, (state) => {
         (state.isLoading = false), (state.user = null);
+      })
+      // Fix check auth !!!
+      .addCase(checkAuth.fulfilled, (state, action) => {
+        state.user = action.payload.user;
       });
-    // Fix check auth !!!
-    // .addCase(checkAuth.fulfilled, (state, action) => {
-    //   state.user = action.payload.user;
-    // });
   },
 });
