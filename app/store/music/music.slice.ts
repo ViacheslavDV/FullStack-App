@@ -15,6 +15,10 @@ export const musicSlice = createSlice({
       state.song = action.payload;
       state.isPlaying = false;
     },
+    removeActiveSong: (state) => {
+      state.song = null;
+      state.isPlaying = false;
+    },
   },
 });
 

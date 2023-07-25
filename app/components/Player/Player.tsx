@@ -35,17 +35,15 @@ const Player: React.FC = () => {
 
   // pause current song if other was chosen
   useEffect(() => {
-    pause();
+    Howler.stop();
   }, [music]);
 
   const play = () => {
     soundRef.current?.play();
-    // music.isPlaying = true;
   };
 
   const pause = () => {
     soundRef.current?.pause();
-    // music.isPlaying = false;
   };
 
   // get current song progress

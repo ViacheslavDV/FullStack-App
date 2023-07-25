@@ -29,22 +29,9 @@ const Music: React.FC = () => {
     console.log(song);
   };
 
-  // get songs length
-  // useEffect(() => {
-  //   soundRef.current = new Howl({
-  //     src: data && (data[0]?.file as any),
-  //     onload: () => {
-  //       setSongDuration(soundRef.current?.duration() || 0);
-  //     },
-  //   });
-  // }, [data]);
-
-  // load images from server
   const myLoader = ({ src }: { src: string }) => {
     return `http://localhost:4200${src}`;
   };
-
-  console.log(data);
 
   return (
     <div className={styles.main}>

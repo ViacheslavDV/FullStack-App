@@ -8,16 +8,18 @@ import { useUserProfileQuery } from "@/app/hooks/query/useUserProfileQuery";
 const Profile: React.FC = () => {
   const { data, status } = useUserProfileQuery();
 
-  console.log(data);
-
   return (
     <main className={styles.main}>
       <section className="flex justify-around w-full px-12">
         <div>
-          <Avatar avatarPath={data?.data.avatarPath} />
+          <ProfileData
+            userName={data?.data.name}
+            userMail={data?.data.email}
+            memberSince={data?.data.createdAt}
+          />
         </div>
         <div>
-          <ProfileData userName={data?.data.name} userMail={data?.data.email} />
+          <Avatar avatarPath={data?.data.avatarPath} />
         </div>
       </section>
       <section>

@@ -10,9 +10,13 @@
 .navigation {
   @include flex-basis;
   max-width: $max-screen-width;
-  @apply mx-auto pb-3;
+
+  @apply mx-auto pb-2 pt-2;
 }
 
 .category {
+  &:hover {
+    color: $text-hover;
+  }
   @apply cursor-pointer;
 }

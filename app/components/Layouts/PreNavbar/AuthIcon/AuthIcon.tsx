@@ -4,11 +4,17 @@ import { useState } from "react";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import UserMenu from "./UserMenu/UserMenu";
 import styles from "./AuthIcon.module.scss";
+import Image from "next/image";
 
 const AuthIcon = () => {
   const { user } = useAuth();
 
   const [openUserMenu, setOpenUserMenu] = useState<boolean>(false);
+
+  const myLoader = ({ src }: { src: string }) => {
+    return `http://localhost:4200${src}`;
+  };
+
   return (
     <>
       {!user && (
@@ -22,9 +28,18 @@ const AuthIcon = () => {
           className={styles.wrapper}
         >
           <div className={styles.main}>
-            <span className={styles.name}>{user.name}</span>
-            <MdOutlineKeyboardArrowDown className={styles.icon} />
+            {user.avatarPath && (
+              <Image
+                className={styles.picture}
+                loader={myLoader}
+                src={user.avatarPath}
+                alt="avatar"
+                width={44}
+                height={44}
+              />
+            )}
           </div>
+          <MdOutlineKeyboardArrowDown className={styles.icon} />
           {openUserMenu && (
             <div className={styles.user_menu}>
               <UserMenu />

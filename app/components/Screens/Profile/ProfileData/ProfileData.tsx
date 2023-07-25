@@ -1,21 +1,24 @@
-import { useAuth } from "@/app/hooks/auth/useAuth";
+import styles from "./ProfileData.module.scss";
 
 type ProfileDataType = {
   userName: string | undefined;
   userMail: string | undefined;
+  memberSince: Date | string | undefined;
 };
 
-const ProfileData: React.FC<ProfileDataType> = ({ userName, userMail }) => {
+const ProfileData: React.FC<ProfileDataType> = ({ userName, memberSince }) => {
+  const member =
+    typeof memberSince === "string"
+      ? memberSince
+      : memberSince?.toLocaleString();
+
   return (
-    <section className="flex flex-col justify-around w-[250px] h-[250px]">
-      <div className="flex flex-col space-y-2 py-4">
-        <span>Profile name:</span>
-        <span></span>
-      </div>
-      <div className="flex flex-col space-y-2 py-4">
-        <span>User email:</span>
-        <span></span>
-      </div>
+    <section className={styles.main}>
+      <span className={styles.name}>{userName}</span>
+      <p className={styles.member}>
+        <span>Member Since : </span>
+        <span>{member?.slice(0, 10)}</span>
+      </p>
     </section>
   );
 };

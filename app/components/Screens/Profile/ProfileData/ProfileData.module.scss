@@ -1,0 +1,14 @@
+@import "@/styles/colors";
+
+.main {
+  @apply flex flex-col justify-around w-[250px] h-[250px];
+}
+
+.name {
+  color: $profile-name;
+  @apply text-lg;
+}
+
+.member {
+  color: $profile-member;
+}

@@ -1,12 +1,14 @@
 @import "@/styles/colors";
 
 .sign_in {
-  @apply flex mt-[8px];
+  &:hover {
+    color: $text-hover;
+  }
+  @apply flex mt-[15px] ease-in-out;
 }
 
 .wrapper {
-  background-color: $auth-icon-color;
-  @apply flex flex-col rounded-lg border border-white px-2 py-[2px] mt-[4px] cursor-pointer;
+  @apply flex flex-row rounded-lg px-2 py-[2px] mt-[4px] cursor-pointer;
 }
 
 .name {
@@ -14,13 +16,20 @@
 }
 
 .main {
-  @apply flex flex-row;
+  @apply pb-[2px];
+}
+
+.picture {
+  @apply border border-white rounded-full;
 }
 
 .icon {
-  @apply h-[20px] w-[20px] mt-[3px];
+  color: $auth-icon-color;
+  @apply h-[20px] w-[24px] mt-[12px] ml-2 border border-white rounded-lg opacity-50;
 }
 
 .user_menu {
-  @apply fixed mt-8 ml-[4px] bg-slate-400 p-[10px] border border-gray-600  rounded-md;
+  background-color: $profile-menu-background;
+  border-color: $profile-menu-border;
+  @apply fixed mt-14 ml-[4px] border p-[10px] rounded-md;
 }

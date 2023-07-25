@@ -10,6 +10,6 @@ export interface IUser {
   hashedPassword: string;
 
   isAdmin: boolean;
-  avatarPath?: string;
+  avatarPath: string | undefined;
   favorites: ISong[] | null;
 }
