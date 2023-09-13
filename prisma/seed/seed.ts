@@ -1,14 +1,10 @@
 import { PrismaClient } from '@prisma/client';
-import { seedUsers } from './seed-users';
-// import { seedMusic } from './seed-music';
-import { seedAuthors } from './seed-authors';
+import { seedAuthorsAndGenres } from './main-seeder';
 
 const prisma = new PrismaClient();
 
 async function main() {
-  // await seedUsers();
-  // await seedMusic();
-  await seedAuthors();
+  await seedAuthorsAndGenres();
 }
 
 main()

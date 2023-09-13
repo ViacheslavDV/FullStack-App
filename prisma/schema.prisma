@@ -17,7 +17,7 @@ model User {
   hashedPassword     String
   
   isAdmin            Boolean  @default(false) @map("is_admin")
-  avatarPath         String   @default("/uploads/defAvatar/defAvatar1.jpg") @map("avatar_path")
+  avatarPath         String   @default("/uploads/def_avatar/def_avatar.jpg") @map("avatar_path")
   favorites          Song[]
 }
 
@@ -26,14 +26,16 @@ model Song {
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @updatedAt @map("updated_at")
 
-  title       String
+  title       String   @unique
   album       String
   artist      String
   listeners   Int      @default(0)
-  image       String?
-  genre       String[]
+  image       String
   filePath    String @map("file_path")
+
+  genre       Genre[]
   inFavorites User[] 
+
   author   Author @relation(fields: [authorId], references: [id])
   authorId Int @map("author_id")
 }
@@ -49,3 +51,11 @@ model Author {
   songs     Song[]
 }
 
+model Genre {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  tag String
+  songs Song[]
+}

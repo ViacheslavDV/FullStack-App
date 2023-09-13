@@ -1,13 +1,14 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Query } from '@nestjs/common';
 import { MusicService } from './music.service';
+import { AllMusicDto } from './dto/all-music.dto';
 
 @Controller('music')
 export class MusicController {
   constructor(private readonly musicService: MusicService) {}
 
   @Get('all')
-  async getAllMusic() {
-    return this.musicService.getAllMusic();
+  async getAllMusic(@Query() queryDto: AllMusicDto) {
+    return this.musicService.getAllMusic(queryDto);
   }
 
   @Get('popular')
