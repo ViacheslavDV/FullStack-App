@@ -1,16 +1,12 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { MdSearch, MdClose } from "react-icons/md";
 import styles from "./Search.module.scss";
 import { useStoreActions } from "@/app/hooks/useStoreActions";
-import { useDebounce } from "@/app/hooks/useDebounce";
-import { useTypedSelector } from "@/app/hooks/useTypedSelector";
 import { useRouter } from "next/router";
 
 const Search: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>("");
   const { setFilters, clearFilters } = useStoreActions();
-  const debounced = useDebounce(inputValue);
-  const { filter } = useTypedSelector((state) => state);
   const router = useRouter();
 
   const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
