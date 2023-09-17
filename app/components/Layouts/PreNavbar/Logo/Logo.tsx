@@ -4,7 +4,7 @@ import styles from "./Logo.module.scss";
 
 const Logo: React.FC = () => {
   return (
-    <Link href="/music/all">
+    <Link href="/music">
       <div className={styles.main}>
         <SiMusicbrainz className={styles.icon} />
         <span className={styles.logo}>Music Brain</span>

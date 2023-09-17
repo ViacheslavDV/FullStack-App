@@ -1,15 +1,11 @@
 import { MusicService } from "@/app/services/music/music.service";
-import { SongDataType } from "@/app/types/music/song-data.type";
-import { useState } from "react";
+import { TypeDataFilters } from "@/app/types/music/song-object.interface";
 import { useQuery } from "react-query";
 
-export const useMusicQuery = () => {
-  const [stateSongDataType, setStateSongDataType] =
-    useState<SongDataType>("all");
-
+export const useMusicQuery = (queryData?: TypeDataFilters) => {
   const { data, status } = useQuery({
-    queryKey: ["music"],
-    queryFn: async () => MusicService.getMusic(stateSongDataType),
+    queryKey: ["music", queryData],
+    queryFn: async () => MusicService.getAllMusic(queryData),
     refetchOnMount: false,
     refetchOnWindowFocus: false,
   });
@@ -17,7 +13,5 @@ export const useMusicQuery = () => {
   return {
     data,
     status,
-    stateSongDataType,
-    setStateSongDataType,
   };
 };

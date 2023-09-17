@@ -2,11 +2,13 @@ import styles from "./PreNavBar.module.scss";
 import AuthIcon from "./AuthIcon/AuthIcon";
 import Search from "./Search/Search";
 import Logo from "./Logo/Logo";
+import { useStoreActions } from "@/app/hooks/useStoreActions";
 
 const PreNavBar: React.FC = () => {
+  const { clearFilters } = useStoreActions();
   return (
     <main className={styles.main}>
-      <h2>
+      <h2 onClick={() => clearFilters()}>
         <Logo />
       </h2>
       <div className={styles.rightSpace}>

@@ -1,37 +1,21 @@
 import { useMusicQuery } from "@/app/hooks/query/useMusicQuery";
 import styles from "./Music.module.scss";
 import { useStoreActions } from "@/app/hooks/useStoreActions";
-import { ISong } from "@/app/types/music/song.interface";
-import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
-import { Howl } from "howler";
-import {
-  MdOutlineFavoriteBorder,
-  MdOutlineFavorite,
-  MdAccessTime,
-} from "react-icons/md";
+import { MdAccessTime } from "react-icons/md";
+import { useTypedSelector } from "@/app/hooks/useTypedSelector";
+import MusicData from "./MusicData";
 
 const Music: React.FC = () => {
-  const { data, status, setStateSongDataType } = useMusicQuery();
-  const [songDuration, setSongDuration] = useState<number>(0);
-  const { setActiveSong } = useStoreActions();
-  const soundRef = useRef<Howl>();
+  const {} = useStoreActions();
+  const { filter } = useTypedSelector((state) => state);
+  const { data, status } = useMusicQuery(filter);
+
   {
     status === "loading" && "Loading";
   }
   {
     status === "error" && "Error";
   }
-
-  // set song in player
-  const handleActive = (song: ISong) => {
-    setActiveSong(song);
-    console.log(song);
-  };
-
-  const myLoader = ({ src }: { src: string }) => {
-    return `http://localhost:4200${src}`;
-  };
 
   return (
     <div className={styles.main}>
@@ -45,40 +29,7 @@ const Music: React.FC = () => {
           <MdAccessTime className={styles.timeIcon} />
         </p>
       </div>
-      <div className={styles.container}>
-        {data &&
-          data.map((song) => (
-            <div
-              onClick={() => handleActive(song)}
-              key={song.id}
-              className={styles.song}
-            >
-              <p className={styles.order}>{song.id}</p>
-              {song.image && (
-                <div className={styles.avatar}>
-                  <Image
-                    loader={myLoader}
-                    className={styles.image}
-                    src={song.image}
-                    alt={song.title}
-                    width={50}
-                    height={50}
-                  />
-                </div>
-              )}
-              <div className={styles.name}>
-                <p className={styles.title}>{song.title}</p>
-                <p className={styles.artist}>{song.artist}</p>
-              </div>
-              <p className={styles.album}>{song.album}</p>
-              <button className={styles.add}>
-                <MdOutlineFavoriteBorder className={styles.addUnHovered} />
-                <MdOutlineFavorite className={styles.addHovered} />
-              </button>
-              <p className={styles.duration}>{songDuration.toFixed(0)}</p>
-            </div>
-          ))}
-      </div>
+      <MusicData data={data} />
     </div>
   );
 };

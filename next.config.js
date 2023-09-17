@@ -11,7 +11,7 @@ const nextConfig = {
     return [
       {
         source: "/",
-        destination: "/music/all",
+        destination: "/music",
         permanent: true,
       },
       {

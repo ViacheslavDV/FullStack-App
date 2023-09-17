@@ -8,6 +8,8 @@ import { useUserProfileQuery } from "@/app/hooks/query/useUserProfileQuery";
 const Profile: React.FC = () => {
   const { data, status } = useUserProfileQuery();
 
+  console.log(data);
+
   return (
     <main className={styles.main}>
       <section className="flex justify-around w-full px-12">

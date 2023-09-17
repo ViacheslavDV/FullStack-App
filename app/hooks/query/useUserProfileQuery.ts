@@ -5,6 +5,8 @@ export const useUserProfileQuery = () => {
   const { data, status } = useQuery({
     queryKey: ["user-profile"],
     queryFn: async () => UserService.getUserProfile(),
+    refetchOnWindowFocus: false,
+    refetchOnMount: false,
   });
 
   return {

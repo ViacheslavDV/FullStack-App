@@ -1,3 +1,4 @@
+import { IGenre } from "../genre.interface";
 import { IUser } from "../user.interface";
 
 export interface ISong {
@@ -10,7 +11,7 @@ export interface ISong {
   artist: string;
   listeners: number;
   image?: string;
-  genre: string[];
+  genre: IGenre;
   filePath: string;
   inFavorites: IUser[] | null;
   author?: IUser | string | null;

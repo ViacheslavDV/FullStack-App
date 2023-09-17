@@ -1,12 +1,13 @@
+import { TypeDataFilters } from "./../../types/music/song-object.interface";
 import { instance } from "@/app/utils/api/api.interceptor";
-import { SongDataType } from "@/app/types/music/song-data.type";
-import { ISong } from "@/app/types/music/song.interface";
+import { ISongObject } from "@/app/types/music/song-object.interface";
 
 export const MusicService = {
-  async getMusic(songDataType: SongDataType) {
-    const response = await instance<ISong[]>({
-      url: `/music/${songDataType}`,
+  async getAllMusic(queryData?: TypeDataFilters) {
+    const response = await instance<ISongObject>({
+      url: `/music`,
       method: "GET",
+      params: queryData,
     });
     return response.data;
   },

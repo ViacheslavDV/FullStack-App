@@ -12,6 +12,7 @@ import {
 import storage from "redux-persist/lib/storage";
 import { userSlice } from "./user/user.slice";
 import { musicSlice } from "./music/music.slice";
+import { filterSlice } from "./filters/filter.slice";
 
 const persistConfig = {
   key: "music-app",
@@ -21,6 +22,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   user: userSlice.reducer,
   music: musicSlice.reducer,
+  filter: filterSlice.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
