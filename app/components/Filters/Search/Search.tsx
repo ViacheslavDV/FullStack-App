@@ -14,13 +14,14 @@ const Search: React.FC = () => {
   };
 
   const handleSearch = () => {
-    setFilters({ search: inputValue });
+    setFilters({ search: inputValue, page: 1, perPage: 10 });
     router.push(`/music?search=${encodeURIComponent(inputValue)}`);
   };
 
   const clearSearch = () => {
     setInputValue("");
     clearFilters();
+    router.push(`/music`);
   };
 
   return (

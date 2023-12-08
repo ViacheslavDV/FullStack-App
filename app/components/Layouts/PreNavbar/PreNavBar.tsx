@@ -1,6 +1,6 @@
 import styles from "./PreNavBar.module.scss";
 import AuthIcon from "./AuthIcon/AuthIcon";
-import Search from "./Search/Search";
+import Search from "../../Filters/Search/Search";
 import Logo from "./Logo/Logo";
 import { useStoreActions } from "@/app/hooks/useStoreActions";
 

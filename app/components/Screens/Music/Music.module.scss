@@ -2,7 +2,8 @@
 
 .main {
   @include screen;
-  @apply overflow-y-scroll;
+
+  @apply overflow-y-scroll mt-0 pt-6;
 }
 
 .container {
