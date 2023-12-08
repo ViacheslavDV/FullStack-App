@@ -6,7 +6,7 @@ import { AllMusicDto } from './dto/all-music.dto';
 export class MusicController {
   constructor(private readonly musicService: MusicService) {}
 
-  @Get('all')
+  @Get()
   async getAllMusic(@Query() queryDto: AllMusicDto) {
     return this.musicService.getAllMusic(queryDto);
   }

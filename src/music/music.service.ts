@@ -19,9 +19,9 @@ export class MusicService {
       prismaSort.push({ listeners: 'asc' });
     else if (sort === EMusicFilters.MOST_POPULAR)
       prismaSort.push({ listeners: 'desc' });
-    else if (sort === EMusicFilters.OLDEST)
-      prismaSort.push({ createdAt: 'asc' });
-    else prismaSort.push({ createdAt: 'desc' });
+    else if (sort === EMusicFilters.NEWEST)
+      prismaSort.push({ createdAt: 'desc' });
+    else prismaSort.push({ createdAt: 'asc' });
 
     const prismaSearchFilter: any = search
       ? {
@@ -46,6 +46,9 @@ export class MusicService {
 
     const music = await this.prisma.song.findMany({
       where: prismaSearchFilter,
+      include: {
+        genre: true,
+      },
       orderBy: prismaSort,
       skip,
       take: perPage,
